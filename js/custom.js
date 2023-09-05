@@ -1,13 +1,5 @@
-// Custom Script
-// Developed by: Samson.Onna
-// CopyRights : http://webthemez.com
-
-/*
-Theme by: WebThemez.com
-Note: Please use our back link in your site
-*/
 $( function() {
-        var endDate = "December  27, 2014 15:03:25";
+        var endDate = "September 20, 2023 00:00:00";
 
         $('.countdown.simple').countdown({ date: endDate });
 
