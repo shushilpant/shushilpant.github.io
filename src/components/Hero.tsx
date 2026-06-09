@@ -22,7 +22,7 @@ export function Hero() {
         >
           <span className="text-ink">Portfolio</span>
           <span>Est. {profile.origin}</span>
-          <span>№ 2026</span>
+          <span>2026</span>
           <span className="nums text-right sm:text-left">{profile.coords}</span>
         </motion.div>
 
