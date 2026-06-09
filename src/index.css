@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Shushil Pant — design system
+   Light editorial / Swiss precision. Warm paper, ink-black type,
+   one restrained cobalt accent. Set in Fraunces, Hanken Grotesk,
+   and IBM Plex Mono.
+   ============================================================ */
+
+@theme {
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Surfaces */
+  --color-paper: #f4f2ec;
+  --color-paper-deep: #eceadf;
+  --color-panel: #faf9f4;
+
+  /* Ink */
+  --color-ink: #15130f;
+  --color-ink-soft: #54504a;
+  --color-ink-faint: #7a7568;
+
+  /* Accent — cobalt ink */
+  --color-accent: #2a3fc4;
+  --color-accent-deep: #1f2f96;
+
+  /* Lines */
+  --color-line: rgba(21, 19, 15, 0.13);
+  --color-line-soft: rgba(21, 19, 15, 0.07);
+  --color-line-strong: rgba(21, 19, 15, 0.26);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  overflow-x: hidden;
+  font-feature-settings: "ss01";
+}
+
+/* Tabular, lined-up numerics everywhere data appears */
+.nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Display headings — Fraunces with a touch of optical softness */
+.font-display {
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 0, "WONK" 0;
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* ---- Page texture: very faint paper grain + engineering grid ---- */
+.paper-grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.grid-faint {
+  background-image:
+    linear-gradient(to right, var(--color-line-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line-soft) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+
+/* ---- Animated underline for links ---- */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 0.4s var(--ease-out-expo);
+}
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hero curve stroke draw */
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
