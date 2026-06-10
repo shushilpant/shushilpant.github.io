@@ -4,7 +4,8 @@ export const profile = {
   title: "Computer Engineer & Mathematician",
   location: "Hattiesburg, Mississippi",
   origin: "Nepal",
-  coords: "31.33°N 89.29°W",
+  coords: "31.33°N / 89.29°W",
+  timezone: "America/Chicago",
   status: "Open to research & engineering roles",
   intro:
     "I'm a Computer Engineering & Mathematics student building AI pipelines, serverless architectures, and data infrastructure for government ministries, state agencies, and research labs — systems engineered to run at scale, and under budget.",
@@ -24,11 +25,50 @@ export const navLinks = [
   { label: "Contact", href: "#contact", index: "06" },
 ];
 
+/** Numeric part is kept separate so the ledger can count up on entry. */
 export const metrics = [
-  { value: "17M+", label: "Records standardised", note: "World Ocean Database" },
-  { value: "98%", label: "Extraction accuracy", note: "500+ transcript PDFs" },
-  { value: "3", label: "Mining ministries served", note: "West Africa" },
-  { value: "<$5", label: "Monthly cloud cost", note: "at peak enrolment" },
+  {
+    value: 17,
+    prefix: "",
+    suffix: "M+",
+    label: "Records standardised",
+    note: "World Ocean Database",
+  },
+  {
+    value: 98,
+    prefix: "",
+    suffix: "%",
+    label: "Extraction accuracy",
+    note: "500+ transcript PDFs",
+  },
+  {
+    value: 3,
+    prefix: "",
+    suffix: "",
+    label: "Mining ministries served",
+    note: "West Africa",
+  },
+  {
+    value: 5,
+    prefix: "<$",
+    suffix: "",
+    label: "Monthly cloud cost",
+    note: "At peak enrolment",
+  },
+];
+
+/** Decorative stack ribbon between Skills and Education. */
+export const marquee = [
+  "Python",
+  "TypeScript",
+  "React 19",
+  "AWS Lambda",
+  "Bedrock",
+  "Elasticsearch",
+  "MongoDB",
+  "Step Functions",
+  "LLM Pipelines",
+  "Mathematics",
 ];
 
 export const capabilities = [

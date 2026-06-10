@@ -1,10 +1,16 @@
 @import "tailwindcss";
 
 /* ============================================================
-   Shushil Pant — design system
-   Light editorial / Swiss precision. Warm paper, ink-black type,
-   one restrained cobalt accent. Set in Fraunces, Hanken Grotesk,
-   and IBM Plex Mono.
+   SHUSHIL PANT — FIELD NOTES
+   Design system: night-instrument editorial.
+
+   Concept   A working engineer's console after dark — deep void
+             surfaces, warm bone ink, one instrument-amber accent,
+             hairline rules with registration ticks, tabular data.
+   Type      Fraunces (display) · Hanken Grotesk (text) · IBM Plex
+             Mono (data & annotation).
+   Motion    One easing (expo-out), masked line reveals, springs.
+             Everything honours prefers-reduced-motion.
    ============================================================ */
 
 @theme {
@@ -12,26 +18,26 @@
   --font-body: "Hanken Grotesk", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
-  /* Surfaces */
-  --color-paper: #f4f2ec;
-  --color-paper-deep: #eceadf;
-  --color-panel: #faf9f4;
+  /* Surfaces — cool void, three steps */
+  --color-void: #08090c;
+  --color-surface: #0c0e13;
+  --color-panel: #11141b;
 
-  /* Ink */
-  --color-ink: #15130f;
-  --color-ink-soft: #54504a;
-  --color-ink-faint: #7a7568;
+  /* Ink — warm bone, three steps */
+  --color-bone: #eae7df;
+  --color-muted: #a49f93;
+  --color-faint: #716c62;
 
-  /* Accent — cobalt ink */
-  --color-accent: #2a3fc4;
-  --color-accent-deep: #1f2f96;
+  /* Accent — instrument amber */
+  --color-amber: #ffb454;
+  --color-amber-deep: #d68a28;
 
-  /* Lines */
-  --color-line: rgba(21, 19, 15, 0.13);
-  --color-line-soft: rgba(21, 19, 15, 0.07);
-  --color-line-strong: rgba(21, 19, 15, 0.26);
+  /* Hairlines */
+  --color-edge: rgba(234, 231, 223, 0.09);
+  --color-edge-soft: rgba(234, 231, 223, 0.05);
+  --color-edge-strong: rgba(234, 231, 223, 0.2);
 
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 *,
@@ -41,8 +47,9 @@
 }
 
 html {
+  color-scheme: dark;
   scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
+  scroll-padding-top: 5.5rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -52,52 +59,79 @@ body {
   margin: 0;
   font-family: var(--font-body);
   font-weight: 400;
-  background-color: var(--color-paper);
-  color: var(--color-ink);
+  background-color: var(--color-void);
+  color: var(--color-bone);
   overflow-x: hidden;
-  font-feature-settings: "ss01";
 }
 
-/* Tabular, lined-up numerics everywhere data appears */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--color-amber);
+  color: var(--color-void);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* Thin dark scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(234, 231, 223, 0.18) var(--color-void);
+}
+
+/* Tabular, lined-up numerals wherever data appears */
 .nums {
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum";
 }
 
-/* Display headings — Fraunces with a touch of optical softness */
+/* Display headings — Fraunces, optically sized, no wonk */
 .font-display {
   font-optical-sizing: auto;
   font-variation-settings: "SOFT" 0, "WONK" 0;
   letter-spacing: -0.02em;
 }
 
-::selection {
-  background: var(--color-accent);
-  color: var(--color-paper);
+/* Hollow display type (marquee, footer wordmark) */
+.text-outline {
+  -webkit-text-stroke: 1px rgba(234, 231, 223, 0.28);
+  color: transparent;
+}
+@supports not (-webkit-text-stroke: 1px black) {
+  .text-outline {
+    color: var(--color-faint);
+  }
 }
 
-:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-  border-radius: 1px;
-}
-
-/* ---- Page texture: very faint paper grain + engineering grid ---- */
-.paper-grain {
+/* ---- Film grain over everything (kept under 5%) ---- */
+.noise {
   pointer-events: none;
   position: fixed;
   inset: 0;
-  z-index: 1;
-  opacity: 0.04;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 80;
+  opacity: 0.045;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.grid-faint {
+/* ---- Faint blueprint grid (hero, menu) ---- */
+.grid-blueprint {
   background-image:
-    linear-gradient(to right, var(--color-line-soft) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--color-line-soft) 1px, transparent 1px);
-  background-size: 46px 46px;
+    linear-gradient(to right, var(--color-edge-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-edge-soft) 1px, transparent 1px);
+  background-size: 44px 44px;
 }
 
 /* ---- Animated underline for links ---- */
@@ -106,10 +140,89 @@ body {
   background-position: 0% 100%;
   background-repeat: no-repeat;
   background-size: 0% 1px;
-  transition: background-size 0.4s var(--ease-out-expo);
+  transition: background-size 0.45s var(--ease-expo);
 }
-.link-underline:hover {
+.link-underline:hover,
+.link-underline:focus-visible {
   background-size: 100% 1px;
+}
+
+/* ---- Live availability dot ---- */
+.dot-live {
+  position: relative;
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--color-amber);
+}
+.dot-live::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  border: 1px solid var(--color-amber);
+  animation: ping 2.4s var(--ease-expo) infinite;
+}
+@keyframes ping {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.8;
+  }
+  80%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* ---- Marquee ---- */
+.marquee {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+.marquee-track {
+  animation: marquee 56s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---- Skip link ---- */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 200;
+  padding: 0.6rem 1rem;
+  background: var(--color-amber);
+  color: var(--color-void);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transform: translateY(-300%);
+  transition: transform 0.3s var(--ease-expo);
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* ---- Custom cursor: hide native pointer on capable devices ---- */
+.cursor-none,
+.cursor-none * {
+  cursor: none !important;
 }
 
 .hide-scrollbar {
@@ -120,16 +233,16 @@ body {
   display: none;
 }
 
-/* Hero curve stroke draw */
-@keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .marquee-track {
+    animation: none;
+  }
+  .dot-live::after {
+    animation: none;
+    opacity: 0;
   }
   *,
   *::before,
