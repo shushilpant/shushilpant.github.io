@@ -1,51 +1,40 @@
-# Shushil Pant — Field Notes
+# Shushil Pant — Personal Website
 
 Personal portfolio for Shushil Pant, a Computer Engineering & Mathematics
 student building AI pipelines, serverless systems, and data infrastructure at
 scale.
 
-## Design system — "Field Notes"
+## Design
 
-A night-instrument editorial: a working engineer's console after dark. Every
-decision derives from one concept — precision instruments annotating dark
-field data — so the details reinforce each other instead of competing.
+A mathematician's working notebook, typeset. Warm paper, ink-black text, and
+two inks used with discipline: **cobalt** for structure, links, and figures;
+**red pencil** for the margin notes — the human voice in the gutter.
 
-**Color.** Three cool void surfaces (`#08090c → #11141b`), three warm bone
-inks (`#eae7df → #716c62`), and exactly one accent: instrument amber
-(`#ffb454`). Hairlines are bone at 5–20% alpha. All tokens live in
-`src/index.css` under `@theme`.
+The details carry the concept:
 
-**Type.** Fraunces (optical-sized display serif) · Hanken Grotesk (text) ·
-IBM Plex Mono (data, annotations, labels). Tabular numerals (`tnum`)
-everywhere data appears.
+- A masthead dateline (`Portfolio — Field Notes · Est. Nepal`) opens the page
+  over faint engineering graph paper.
+- **Fig. 01** — a least-squares fit that draws itself in, residuals dashed,
+  one outlier circled in red and kept on principle.
+- A pencilled underline lands on the phrase that matters, slightly after the
+  page settles — two strokes that don't quite agree, the way real ones don't.
+- **Margin notes** in red pencil ("not a typo.", "125 years of ocean,
+  standardised.") annotate the record without interrupting it.
+- **Real footnotes** with return links, a dated **Now** line, and a signed
+  closing — the page reads like it was written, not generated.
+- Motion is sparse and honours `prefers-reduced-motion` throughout: soft
+  settles, the curve and underline draw-ins, a counting ledger. Nothing
+  performs.
 
-**Motion.** One easing (`cubic-bezier(0.16, 1, 0.3, 1)`), masked line
-reveals, spring physics for pointer interactions. Every animation honours
-`prefers-reduced-motion` — including the canvas, marquee, preloader, and
-custom cursor, which disable themselves entirely.
-
-**Signature details.**
-
-- *Boot sequence* — a 1.2s preloader, shown once per session, that gates the
-  hero choreography.
-- *Wave field* — an interference-pattern dot canvas behind the hero (a nod to
-  17M oceanographic records). Canvas 2D, ~1.8k points, pauses offscreen and
-  on hidden tabs.
-- *HUD status bar* — fixed instrument footer with availability, active
-  section, scroll depth, and local Hattiesburg time.
-- *Precision cursor* — dot + lagging ring blended with `difference`; mounts
-  only for fine pointers with motion allowed.
-- *Registration ticks* — `+` marks where hairlines meet, echoed by sparse
-  crosses in the wave field and the blueprint grid in the menu.
-- Magnetic CTAs, count-up metrics, text-decode datelines, a hollow-type stack
-  marquee, and a film-grain overlay held under 5%.
+Set in **Fraunces**, **Hanken Grotesk**, and **IBM Plex Mono**. Tokens live
+in `src/index.css` under `@theme`.
 
 ## Stack
 
 - **React 19** + **TypeScript**
 - **Vite 8**
 - **Tailwind CSS v4** (design tokens via `@theme`)
-- **Framer Motion** for reveals, springs, and scroll state
+- **Framer Motion** for reveals and scroll state
 
 ## Develop
 
@@ -62,26 +51,27 @@ npm run lint       # run ESLint
 All copy and data live in [`src/data/resume.ts`](src/data/resume.ts) —
 profile, contact links, metrics, work history, skills, education, and earlier
 roles. Update that single file to change what the site shows; the components
-read from it.
+read from it. The red-pencil gutter notes live with the components that use
+them (`Experience.tsx`, `AdditionalExperience.tsx`, `Hero.tsx` via
+`metrics[].aside`).
 
 ## Structure
 
 ```
 src/
   data/resume.ts        # all content
-  hooks/                # useActiveSection (shared by nav + HUD)
+  hooks/                # useActiveSection (nav highlight)
   index.css             # design tokens, base styles, motifs
   App.tsx               # page composition
   components/
     Navigation.tsx Hero.tsx About.tsx Experience.tsx
     Skills.tsx Education.tsx AdditionalExperience.tsx
     Contact.tsx Footer.tsx
-    ui/                 # Preloader, Cursor, StatusBar, WaveField,
-                        # Marquee, Magnetic, Counter, Scramble,
-                        # Reveal, SectionHeader, ScrollProgress, Tick
+    ui/                 # PlotMotif, MarginNote, HandUnderline,
+                        # Counter, Reveal, SectionHeader, ScrollProgress
 ```
 
 Accessibility: `prefers-reduced-motion` respected throughout, semantic
 landmarks, a skip link, focus-visible outlines, `aria` attributes on
-interactive controls, and decorative layers (canvas, marquee, HUD, grain)
-hidden from assistive tech.
+interactive controls, and decorative flourishes (grain, figures, margin
+notes) hidden from assistive tech.

@@ -1,104 +1,58 @@
 import { motion, useReducedMotion } from "framer-motion";
-import type { ReactNode } from "react";
 import { metrics, profile } from "../data/resume";
 import { Counter } from "./ui/Counter";
-import { Magnetic } from "./ui/Magnetic";
-import { Scramble } from "./ui/Scramble";
-import { Tick } from "./ui/Tick";
-import { WaveField } from "./ui/WaveField";
+import { HandUnderline } from "./ui/HandUnderline";
+import { PlotMotif } from "./ui/PlotMotif";
 
-const EASE = [0.16, 1, 0.3, 1] as const;
-
-function MaskedLine({
-  children,
-  delay,
-  ready,
-}: {
-  children: ReactNode;
-  delay: number;
-  ready: boolean;
-}) {
+export function Hero() {
   const reduce = useReducedMotion();
-  return (
-    <span className="block overflow-hidden pb-[0.08em] -mb-[0.08em]">
-      <motion.span
-        className="block will-change-transform"
-        initial={reduce ? { opacity: 0 } : { y: "112%" }}
-        animate={
-          ready ? (reduce ? { opacity: 1 } : { y: 0 }) : undefined
-        }
-        transition={{ duration: 1, delay, ease: EASE }}
-      >
-        {children}
-      </motion.span>
-    </span>
-  );
-}
-
-export function Hero({ ready }: { ready: boolean }) {
-  const reduce = useReducedMotion();
-
-  const fade = (delay: number) => ({
-    initial: reduce ? { opacity: 0 } : { opacity: 0, y: 20 },
-    animate: ready
-      ? { opacity: 1, y: 0 }
-      : reduce
-        ? { opacity: 0 }
-        : { opacity: 0, y: 20 },
-    transition: { duration: 0.9, delay, ease: EASE },
+  const rise = (delay: number) => ({
+    initial: reduce ? { opacity: 0 } : { opacity: 0, y: 24 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] as const },
   });
 
   return (
-    <section id="top" className="relative flex min-h-[100svh] flex-col overflow-hidden">
-      <WaveField className="absolute inset-0 h-full w-full" />
-      {/* amber atmosphere, kept faint */}
+    <section id="top" className="relative overflow-hidden">
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-48 top-[18%] h-[460px] w-[460px] rounded-full bg-amber/[0.05] blur-[130px]"
+        className="graph-paper pointer-events-none absolute inset-0 opacity-60 [mask-image:linear-gradient(to_bottom,black_55%,transparent)]"
       />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[1240px] flex-1 flex-col px-6 lg:px-10">
-        {/* dateline */}
+      <div className="relative mx-auto max-w-[1200px] px-6 pt-28 lg:px-10 lg:pt-32">
+        {/* masthead dateline */}
         <motion.div
-          {...fade(0.05)}
-          className="mt-24 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 border-y border-edge py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-faint lg:mt-28"
+          {...rise(0.05)}
+          className="grid grid-cols-2 gap-y-2 border-y border-line py-3 font-mono text-[10px] uppercase tracking-[0.18em] text-ink-faint sm:flex sm:items-center sm:justify-between"
         >
-          <Scramble text="Field notes — Portfolio 2026" className="text-muted" />
-          <Scramble
-            text={`${profile.origin} → Mississippi`}
-            delay={0.15}
-            className="hidden sm:inline"
-          />
-          <Scramble
-            text={profile.coords}
-            delay={0.3}
-            className="nums hidden md:inline"
-          />
-          <span className="flex items-center gap-2 text-amber">
-            <span className="dot-live" />
-            Open to work
-          </span>
+          <span className="text-ink">Portfolio — Field Notes</span>
+          <span>Est. {profile.origin}</span>
+          <span className="nums">{profile.nowDate}</span>
+          <span className="nums text-right sm:text-left">{profile.coords}</span>
         </motion.div>
 
-        {/* statement */}
-        <div className="flex flex-1 flex-col justify-center py-16 lg:py-12">
-          <h1 className="font-display max-w-[14ch] text-[clamp(2.6rem,8.4vw,6.9rem)] font-medium leading-[0.99] tracking-[-0.025em] text-bone sm:max-w-none">
-            <MaskedLine ready={ready} delay={0.12}>
-              Rigorous mathematics,
-            </MaskedLine>
-            <MaskedLine ready={ready} delay={0.2}>
-              <em className="font-light italic text-amber">engineered</em> into
-              systems
-            </MaskedLine>
-            <MaskedLine ready={ready} delay={0.28}>
-              that survive production.
-            </MaskedLine>
-          </h1>
-
-          <div className="mt-12 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+        <div className="grid grid-cols-1 items-center gap-12 pb-16 pt-14 lg:grid-cols-[1.12fr_0.88fr] lg:gap-10 lg:pb-20 lg:pt-20">
+          {/* statement */}
+          <div>
             <motion.p
-              {...fade(0.45)}
-              className="max-w-xl text-[1.0625rem] leading-relaxed text-muted"
+              {...rise(0.15)}
+              className="mb-7 font-mono text-[11px] uppercase tracking-[0.2em] text-cobalt"
+            >
+              From {profile.origin} · Based in {profile.location}
+            </motion.p>
+
+            <motion.h1
+              {...rise(0.25)}
+              className="font-display text-[clamp(2.1rem,8.2vw,4.9rem)] font-medium leading-[1.05] text-ink"
+            >
+              Rigorous mathematics,{" "}
+              <span className="font-normal italic">engineered</span> into
+              systems that <HandUnderline>survive production</HandUnderline>.
+            </motion.h1>
+
+            <motion.p
+              {...rise(0.4)}
+              className="mt-8 max-w-xl text-[1.0625rem] leading-relaxed text-ink-soft"
             >
               I'm {profile.name} — a Computer Engineering &amp; Mathematics
               student building AI pipelines, serverless architectures, and
@@ -107,65 +61,83 @@ export function Hero({ ready }: { ready: boolean }) {
             </motion.p>
 
             <motion.div
-              {...fade(0.55)}
-              className="flex shrink-0 flex-wrap items-center gap-x-8 gap-y-4"
+              {...rise(0.55)}
+              className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-4"
             >
-              <Magnetic>
-                <a
-                  href="#work"
-                  className="group inline-flex items-center gap-3 rounded-full bg-amber px-7 py-3.5 font-mono text-[11px] uppercase tracking-[0.16em] text-void transition-colors duration-300 hover:bg-bone"
+              <a
+                href="#work"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-ink px-6 py-3 font-mono text-[11px] uppercase tracking-[0.16em] text-paper transition-colors hover:bg-cobalt"
+              >
+                View selected work
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  aria-hidden
+                  className="transition-transform group-hover:translate-x-0.5"
                 >
-                  View selected work
-                  <svg
-                    width="13"
-                    height="13"
-                    viewBox="0 0 13 13"
-                    fill="none"
-                    aria-hidden
-                    className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5"
-                  >
-                    <path
-                      d="M2.5 2.5h8v8M10.5 2.5l-8 8"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      transform="rotate(90 6.5 6.5)"
-                    />
-                  </svg>
-                </a>
-              </Magnetic>
+                  <path
+                    d="M1 7h12M8 2l5 5-5 5"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
               <a
                 href="#contact"
-                className="link-underline font-mono text-[11px] uppercase tracking-[0.16em] text-bone"
+                className="link-underline font-mono text-[11px] uppercase tracking-[0.16em] text-ink"
               >
                 Get in touch
               </a>
             </motion.div>
           </div>
+
+          {/* Fig. 01 */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.1, delay: 0.45 }}
+            className="relative hidden lg:block"
+          >
+            <PlotMotif className="mx-auto w-full max-w-[440px]" />
+            <p className="mt-2 text-right font-mono text-[9px] uppercase tracking-[0.18em] text-ink-faint">
+              Fig. 01 — least-squares fit.{" "}
+              <span className="text-pencil normal-case tracking-normal italic">
+                the outlier stays.
+              </span>
+            </p>
+          </motion.div>
         </div>
 
-        {/* instrument ledger */}
+        {/* ledger */}
         <motion.div
-          {...fade(0.7)}
-          className="relative grid grid-cols-2 border-t border-edge-strong pb-12 lg:grid-cols-4 lg:pb-14"
+          {...rise(0.7)}
+          className="grid grid-cols-2 border-t border-line-strong sm:grid-cols-4"
         >
-          <Tick className="-left-1 -top-[4.5px]" />
-          <Tick className="-right-1 -top-[4.5px] hidden lg:block" />
           {metrics.map((m, i) => (
             <div
               key={m.label}
-              className={`pt-7 ${
-                i % 2 !== 0 ? "border-l border-edge pl-5 lg:pl-7" : ""
-              } ${i >= 2 ? "max-lg:mt-6 lg:border-l lg:border-edge lg:pl-7" : ""}`}
+              className={`py-6 sm:py-7 ${i !== 0 ? "sm:border-l sm:border-line sm:pl-6" : ""} ${
+                i % 2 !== 0 ? "border-l border-line pl-5 sm:pl-6" : ""
+              } ${i >= 2 ? "border-t border-line sm:border-t-0" : ""}`}
             >
-              <p className="font-display text-[2.4rem] font-light leading-none text-bone">
+              <p className="font-display text-[2.25rem] font-medium leading-none text-ink">
                 <Counter value={m.value} prefix={m.prefix} suffix={m.suffix} />
               </p>
-              <p className="mt-3 text-sm leading-snug text-muted">{m.label}</p>
-              <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-faint">
+              <p className="mt-2.5 text-sm leading-snug text-ink-soft">
+                {m.label}
+              </p>
+              <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.12em] text-ink-faint">
                 {m.note}
               </p>
+              {m.aside && (
+                <p aria-hidden className="note mt-2 text-[0.85rem]">
+                  {m.aside}
+                </p>
+              )}
             </div>
           ))}
         </motion.div>

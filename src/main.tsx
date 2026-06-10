@@ -3,11 +3,11 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
 
-// A note for the engineers who open the console.
+// For the curious.
 console.log(
-  "%c SHUSHIL PANT — FIELD NOTES %c\n\nReact 19 · TypeScript · Tailwind 4 · Vite\nSource: github.com/shushilpant/shushilpant.github.io",
-  "background:#ffb454;color:#08090c;font-family:monospace;font-weight:bold;padding:4px 8px;",
-  "color:#a49f93;font-family:monospace;"
+  "%cField notes, set in type.%c\nIf you're reading this, we'd probably get along → shushil.pant@outlook.com",
+  "font-family:Georgia,serif;font-style:italic;font-size:14px;color:#1a1712;",
+  "font-family:monospace;font-size:11px;color:#56514a;"
 );
 
 createRoot(document.getElementById("root")!).render(

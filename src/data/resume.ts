@@ -4,9 +4,10 @@ export const profile = {
   title: "Computer Engineer & Mathematician",
   location: "Hattiesburg, Mississippi",
   origin: "Nepal",
-  coords: "31.33°N / 89.29°W",
-  timezone: "America/Chicago",
+  coords: "31.33°N 89.29°W",
   status: "Open to research & engineering roles",
+  now: "AI research at Peblink — mining intelligence for West Africa",
+  nowDate: "June 2026",
   intro:
     "I'm a Computer Engineering & Mathematics student building AI pipelines, serverless architectures, and data infrastructure for government ministries, state agencies, and research labs — systems engineered to run at scale, and under budget.",
   email: "shushil.pant@outlook.com",
@@ -25,7 +26,8 @@ export const navLinks = [
   { label: "Contact", href: "#contact", index: "06" },
 ];
 
-/** Numeric part is kept separate so the ledger can count up on entry. */
+/** Numeric part kept separate so the ledger can count up on entry.
+ *  `aside` is a red-pencil remark, used sparingly. */
 export const metrics = [
   {
     value: 17,
@@ -33,6 +35,7 @@ export const metrics = [
     suffix: "M+",
     label: "Records standardised",
     note: "World Ocean Database",
+    aside: "",
   },
   {
     value: 98,
@@ -40,6 +43,7 @@ export const metrics = [
     suffix: "%",
     label: "Extraction accuracy",
     note: "500+ transcript PDFs",
+    aside: "",
   },
   {
     value: 3,
@@ -47,6 +51,7 @@ export const metrics = [
     suffix: "",
     label: "Mining ministries served",
     note: "West Africa",
+    aside: "",
   },
   {
     value: 5,
@@ -54,21 +59,8 @@ export const metrics = [
     suffix: "",
     label: "Monthly cloud cost",
     note: "At peak enrolment",
+    aside: "not a typo.",
   },
-];
-
-/** Decorative stack ribbon between Skills and Education. */
-export const marquee = [
-  "Python",
-  "TypeScript",
-  "React 19",
-  "AWS Lambda",
-  "Bedrock",
-  "Elasticsearch",
-  "MongoDB",
-  "Step Functions",
-  "LLM Pipelines",
-  "Mathematics",
 ];
 
 export const capabilities = [

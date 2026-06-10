@@ -40,21 +40,21 @@ export function Navigation() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-[70] transition-[background-color,border-color,backdrop-filter] duration-500 ${
+        className={`fixed inset-x-0 top-0 z-[70] transition-all duration-500 ${
           scrolled
-            ? "border-b border-edge bg-void/75 backdrop-blur-md"
+            ? "border-b border-line bg-paper/85 backdrop-blur-md"
             : "border-b border-transparent"
         }`}
       >
-        <nav className="mx-auto flex max-w-[1240px] items-center justify-between px-6 py-4 lg:px-10">
+        <nav className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4 lg:px-10">
           <a
             href="#top"
             onClick={toTop}
-            className="group flex items-center gap-3"
+            className="group flex items-center gap-2.5"
             aria-label="Back to top"
           >
-            <span className="h-2 w-2 bg-amber transition-transform duration-300 group-hover:rotate-45" />
-            <span className="font-display text-[1.3rem] font-medium leading-none text-bone transition-colors group-hover:text-amber">
+            <span className="h-2 w-2 rounded-full bg-cobalt transition-transform group-hover:scale-125" />
+            <span className="font-display text-[1.35rem] font-medium leading-none text-ink transition-colors group-hover:text-cobalt">
               {profile.name}
             </span>
           </a>
@@ -66,12 +66,12 @@ export function Navigation() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className={`flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.16em] transition-colors ${
-                      isActive ? "text-amber" : "text-muted hover:text-bone"
+                    className={`flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.14em] transition-colors ${
+                      isActive ? "text-cobalt" : "text-ink-soft hover:text-ink"
                     }`}
                   >
                     <span
-                      className={`nums ${isActive ? "text-amber" : "text-faint"}`}
+                      className={`nums ${isActive ? "text-cobalt" : "text-ink-faint"}`}
                     >
                       {link.index}
                     </span>
@@ -84,7 +84,7 @@ export function Navigation() {
 
           <a
             href="#contact"
-            className="hidden items-center rounded-full border border-edge-strong px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-bone transition-colors hover:border-bone hover:bg-bone hover:text-void lg:inline-flex"
+            className="hidden items-center rounded-full border border-line-strong px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-ink transition-colors hover:border-ink hover:bg-ink hover:text-paper lg:inline-flex"
           >
             Get in touch
           </a>
@@ -93,17 +93,17 @@ export function Navigation() {
             type="button"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
-            className="relative z-[75] flex flex-col gap-[6px] p-2 lg:hidden"
+            className="relative z-[75] flex flex-col gap-[5px] p-2 lg:hidden"
             onClick={() => setMobileOpen((v) => !v)}
           >
             <span
-              className={`block h-px w-6 bg-bone transition-transform duration-300 ${
-                mobileOpen ? "translate-y-[3.5px] rotate-45" : ""
+              className={`block h-px w-6 bg-ink transition-transform duration-300 ${
+                mobileOpen ? "translate-y-[3px] rotate-45" : ""
               }`}
             />
             <span
-              className={`block h-px w-6 bg-bone transition-transform duration-300 ${
-                mobileOpen ? "-translate-y-[3.5px] -rotate-45" : ""
+              className={`block h-px w-6 bg-ink transition-transform duration-300 ${
+                mobileOpen ? "-translate-y-[3px] -rotate-45" : ""
               }`}
             />
           </button>
@@ -116,8 +116,8 @@ export function Navigation() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.35 }}
-            className="grid-blueprint fixed inset-0 z-[60] flex flex-col justify-between bg-void px-7 pb-10 pt-28 lg:hidden"
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[60] flex flex-col justify-between bg-paper px-7 pb-10 pt-28 lg:hidden"
           >
             <nav>
               {navLinks.map((link, i) => (
@@ -127,17 +127,17 @@ export function Navigation() {
                     initial={reduce ? { opacity: 0 } : { y: "110%" }}
                     animate={reduce ? { opacity: 1 } : { y: 0 }}
                     transition={{
-                      delay: 0.06 + i * 0.055,
-                      duration: 0.65,
+                      delay: 0.05 + i * 0.05,
+                      duration: 0.6,
                       ease: [0.16, 1, 0.3, 1],
                     }}
                     onClick={() => setMobileOpen(false)}
-                    className="flex items-baseline gap-5 border-b border-edge py-4"
+                    className="flex items-baseline gap-4 border-b border-line py-4"
                   >
-                    <span className="nums font-mono text-xs text-amber">
+                    <span className="nums font-mono text-xs text-cobalt">
                       {link.index}
                     </span>
-                    <span className="font-display text-[2.6rem] font-medium leading-none text-bone">
+                    <span className="font-display text-4xl font-medium text-ink">
                       {link.label}
                     </span>
                   </motion.a>
@@ -148,16 +148,11 @@ export function Navigation() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              className="flex items-end justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-faint"
+              transition={{ delay: 0.35, duration: 0.5 }}
+              className="flex items-end justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-ink-faint"
             >
-              <div className="space-y-1.5">
-                <p className="flex items-center gap-2 text-muted">
-                  <span className="dot-live" /> Open to work
-                </p>
-                <p className="nums">{profile.coords}</p>
-              </div>
-              <a href={`mailto:${profile.email}`} className="text-bone">
+              <p className="nums">{profile.coords}</p>
+              <a href={`mailto:${profile.email}`} className="text-ink">
                 {profile.email}
               </a>
             </motion.div>
