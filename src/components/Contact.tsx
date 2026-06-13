@@ -60,10 +60,9 @@ export function Contact() {
                 <span className="font-normal italic">worth solving?</span>
               </h2>
               <p className="mt-6 max-w-md text-[1.0625rem] leading-relaxed text-ink-soft">
-                I'm open to research collaborations, engineering roles, and
-                conversations about intelligent systems, data infrastructure,
-                and full-stack development. The inbox is always open — and I
-                do mean always.
+                I'm open to research collaborations and engineering roles, and
+                happy to talk about intelligent systems, data infrastructure,
+                or full-stack work. The inbox is open.
               </p>
 
               <p className="font-display mt-10 text-2xl italic text-ink">

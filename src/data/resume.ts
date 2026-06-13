@@ -6,10 +6,10 @@ export const profile = {
   origin: "Nepal",
   coords: "31.33°N 89.29°W",
   status: "Open to research & engineering roles",
-  now: "AI research at Peblink — mining intelligence for West Africa",
+  now: "AI research at Peblink, mining intelligence for West Africa.",
   nowDate: "June 2026",
   intro:
-    "I'm a Computer Engineering & Mathematics student building AI pipelines, serverless architectures, and data infrastructure for government ministries, state agencies, and research labs — systems engineered to run at scale, and under budget.",
+    "I'm a Computer Engineering and Mathematics student. I build AI pipelines, serverless systems, and data infrastructure for government ministries, state agencies, and research labs.",
   email: "shushil.pant@outlook.com",
   github: "https://github.com/shushilpant",
   githubHandle: "github.com/shushilpant",
@@ -67,12 +67,12 @@ export const capabilities = [
   {
     kicker: "AI & intelligence systems",
     description:
-      "Multi-provider LLM pipelines with citation-enforced outputs, prompt-injection hardening, inline entity resolution, and human-in-the-loop review.",
+      "Multi-provider LLM pipelines with citation-enforced outputs, prompt-injection hardening, inline entity resolution, human-in-the-loop review.",
   },
   {
     kicker: "Full-stack engineering",
     description:
-      "React 19 / TypeScript dashboards and event-driven, serverless AWS architectures built for production scale and real-time interaction.",
+      "React 19 / TypeScript dashboards and event-driven, serverless AWS architectures built for production scale.",
   },
   {
     kicker: "Data engineering",
@@ -86,11 +86,11 @@ export const experience = [
     id: "peblink",
     role: "AI Research Project Team Member",
     company: "Peblink",
-    project: "West Africa Mining Intelligence Initiative",
+    project: null,
     period: "May 2026 — Present",
     featured: true,
     summary:
-      "A React 19 mining-intelligence dashboard serving three West African ministries, powered by a multi-provider AI pipeline grounded strictly in live compliance data.",
+      "A React 19 dashboard for three West African mining ministries. The AI pipeline runs across multiple providers and is grounded only in live compliance data — no free-floating model output.",
     tags: ["React 19", "TypeScript", "AI Pipeline", "Recharts"],
     highlights: [
       "Architected a full-stack React 19 / TypeScript mining intelligence dashboard serving three West African mining ministries with 8 interconnected views and real-time country-level filtering across Guinea, Ghana, and Côte d'Ivoire.",
@@ -109,7 +109,7 @@ export const experience = [
     period: "Jan 2026 — May 2026",
     featured: true,
     summary:
-      "A fully serverless, event-driven licensing pipeline pairing Amazon Bedrock extraction with a deterministic Python rule engine — processing thousands of applications for under $5/month.",
+      "A serverless, event-driven licensing pipeline. Bedrock handles the extraction; a deterministic Python rule engine handles the decisions. Processes thousands of applications for under $5 a month.",
     tags: ["AWS CDK", "Lambda", "Bedrock", "React"],
     highlights: [
       "Engineered a fully serverless, event-driven pipeline using AWS CDK, Lambda, Step Functions, S3, and DynamoDB — sustaining cloud costs under $5/month at peak enrolment.",
@@ -127,7 +127,7 @@ export const experience = [
     period: "May 2025 — Sep 2025",
     featured: true,
     summary:
-      "Standardised 17M+ oceanographic records spanning 125 years for NOAA's Aquaview, and shipped the AQUAVIEW Python library — 1,000+ downloads.",
+      "Standardised over 17 million oceanographic records — 125 years of the World Ocean Database — for NOAA's Aquaview. Shipped the AQUAVIEW Python library along the way; it's past 1,000 downloads.",
     tags: ["Python", "MongoDB", "Elasticsearch", "LLM"],
     highlights: [
       "Processed and standardised 17M+ oceanographic records spanning 125 years from the World Ocean Database for NOAA's Aquaview platform.",
@@ -145,7 +145,7 @@ export const experience = [
     period: "Sep 2025 — May 2026",
     featured: false,
     summary:
-      "Standardised service workflows and built JQL dashboards across portfolio companies, with n8n pipelines that retired manual reporting.",
+      "Standardised service workflows and built JQL dashboards across the portfolio companies. The n8n pipelines I set up retired most of the manual reporting.",
     tags: ["Jira", "n8n", "JQL", "Confluence"],
     highlights: [
       "Designed automation workflows in Jira Service Management across multiple portfolio companies, standardising ticket routing, escalation policies, and SLA tracking.",
@@ -162,7 +162,7 @@ export const experience = [
     period: "Aug 2025 — May 2026",
     featured: false,
     summary:
-      "One-on-one and group tutoring in College Algebra — an 86% pass rate and 74% class average in Fall 2025.",
+      "One-on-one and group tutoring in College Algebra. 86% pass rate, 74% class average in Fall 2025.",
     tags: ["Teaching", "College Algebra"],
     highlights: [
       "Achieved an 86% student pass rate and 74% class average in Fall 2025 through targeted one-on-one and group tutoring in College Algebra.",
@@ -178,7 +178,7 @@ export const experience = [
     period: "Sep 2024 — Mar 2025",
     featured: false,
     summary:
-      "Built core MVP UI with SignalR real-time sync and a reusable component library that cut front-end build time 45%.",
+      "Built the core MVP UI with SignalR real-time sync, plus a reusable component library that cut front-end build time by 45%.",
     tags: ["JavaScript", "SignalR", "WCAG"],
     highlights: [
       "Developed core UI components for an MVP web application supporting real-time decision optimisation for 1,200+ simulated concurrent users.",
@@ -195,7 +195,7 @@ export const experience = [
     period: "Aug 2025 — Present",
     featured: false,
     summary:
-      "Lead planning for workshops, hackathons, and DevFest; founded and ran the inaugural Robot Soccer tournament.",
+      "I help plan the workshops, hackathons, and DevFest. I also started and ran the chapter's first Robot Soccer tournament.",
     tags: ["Leadership", "Workshops", "DevFest"],
     highlights: [
       "Coordinate and lead planning of technical workshops, hackathons, and coding competitions.",
@@ -249,7 +249,7 @@ export const additionalExperience = [
     place: "Nepal",
     period: "2021 — 2024",
     detail:
-      "Deployed a custom digital catalogue system, expanded holdings 150% to 10,000+ volumes, and led literacy programmes reaching 500+ residents.",
+      "Deployed a custom digital catalogue system, expanded holdings 150% to over 10,000 volumes, and ran literacy programmes that reached more than 500 residents.",
   },
   {
     role: "Technology Intern",
@@ -257,7 +257,7 @@ export const additionalExperience = [
     place: "Nepal",
     period: "2022 — 2024",
     detail:
-      "Revamped the official website, built searchable digital archives, and digitised 2,000+ historical documents to preserve cultural heritage.",
+      "Revamped the official website, built searchable digital archives, and digitised over 2,000 historical documents.",
   },
   {
     role: "Volunteer Teacher",
@@ -265,7 +265,7 @@ export const additionalExperience = [
     place: "Nepal",
     period: "2023 — 2024",
     detail:
-      "Taught Python and JavaScript to 120+ students; mentored 3 teams to top-10 finishes at regional coding competitions.",
+      "Taught Python and JavaScript to more than 120 students; mentored three teams to top-10 finishes at regional coding competitions.",
   },
   {
     role: "IT Support Assistant",
@@ -273,6 +273,6 @@ export const additionalExperience = [
     place: "Nepal",
     period: "2021 — 2022",
     detail:
-      "Provided IT support, modernised network infrastructure, and led digitisation of 5 years of corporate records.",
+      "Provided IT support, modernised the network infrastructure, and led the digitisation of five years of corporate records.",
   },
 ];

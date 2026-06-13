@@ -38,7 +38,8 @@ export function Hero() {
               {...rise(0.15)}
               className="mb-7 font-mono text-[11px] uppercase tracking-[0.2em] text-cobalt"
             >
-              From {profile.origin} · Based in {profile.location}
+              {profile.coords} · From {profile.origin} · Based in{" "}
+              {profile.location}
             </motion.p>
 
             <motion.h1
@@ -46,18 +47,17 @@ export function Hero() {
               className="font-display text-[clamp(2.1rem,8.2vw,4.9rem)] font-medium leading-[1.05] text-ink"
             >
               Rigorous mathematics,{" "}
-              <span className="font-normal italic">engineered</span> into
-              systems that <HandUnderline>survive production</HandUnderline>.
+              <span className="font-normal italic">built</span> into
+              software that <HandUnderline>survives production</HandUnderline>.
             </motion.h1>
 
             <motion.p
               {...rise(0.4)}
               className="mt-8 max-w-xl text-[1.0625rem] leading-relaxed text-ink-soft"
             >
-              I'm {profile.name} — a Computer Engineering &amp; Mathematics
-              student building AI pipelines, serverless architectures, and
-              data infrastructure for government ministries, state agencies,
-              and research labs.
+              I'm a Computer Engineering and Mathematics student. I build AI
+              pipelines, serverless systems, and data infrastructure for
+              government ministries, state agencies, and research labs.
             </motion.p>
 
             <motion.div

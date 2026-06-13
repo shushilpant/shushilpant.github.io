@@ -127,7 +127,7 @@ export function Experience() {
           label="Work"
           meta="2024 — 2026"
           title="Selected work"
-          lede="Seven roles across AI research, government technology, scientific data, and finance — each one a different edge of building intelligent, production-grade systems. Open any entry for detail."
+          lede="Seven roles since 2024, across AI research, government technology, scientific data, and finance. Open any entry for the detail."
         />
 
         <Reveal>

@@ -13,7 +13,7 @@ export function AdditionalExperience() {
             label="Earlier"
             meta="Nepal · 2021 — 2024"
             title="Where it started"
-            lede="Before engineering school in Mississippi, I spent years in Nepal building community technology infrastructure — digitising cultural archives, expanding library access, and teaching the next generation to code."
+            lede="Before Mississippi I spent a few years in Nepal building community technology infrastructure — digitising archives, expanding library access, teaching students to code."
           />
           <div className="hidden lg:block">
             <MarginNote className="mt-24 w-44">

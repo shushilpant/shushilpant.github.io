@@ -3,8 +3,8 @@ import { Reveal } from "./ui/Reveal";
 import { SectionHeader } from "./ui/SectionHeader";
 
 const facts = [
-  { k: "Based", v: profile.location },
-  { k: "Origin", v: profile.origin },
+  { k: "Based in", v: "Hattiesburg" },
+  { k: "From", v: profile.origin },
   { k: "Studying", v: "Computer Eng. & Math" },
   { k: "Graduating", v: education.expected },
 ];
@@ -18,7 +18,7 @@ const footnotes = [
   {
     id: "fn2",
     refId: "fnref2",
-    text: "Spanning 125 years of the World Ocean Database. I came out of it with strong opinions about timestamp formats.",
+    text: "125 years of the World Ocean Database. I came out of that with strong opinions about timestamp formats.",
   },
 ];
 
@@ -43,28 +43,30 @@ export function About() {
           <div>
             <Reveal>
               <p className="max-w-xl text-[1.0625rem] leading-relaxed text-ink-soft">
-                From serverless compliance pipelines processing thousands of
-                licensing applications, to mining-intelligence dashboards
-                serving three West African ministries
+                I'm a Computer Engineering and Mathematics student. I build
+                serverless compliance pipelines, mining-intelligence
+                dashboards, and data tooling for scientific archives. So far
+                that's meant processing thousands of licensing applications
+                for the Mississippi Board of Nursing, building dashboards for
+                three West African mining ministries
                 <a href="#fn1" id="fnref1" className="fn-ref" aria-label="Footnote 1">
                   1
                 </a>
-                , to standardising 17 million oceanographic records
+                , and standardising 17 million oceanographic records
                 <a href="#fn2" id="fnref2" className="fn-ref" aria-label="Footnote 2">
                   2
                 </a>{" "}
-                for NOAA — my work lives at the point where mathematical
-                precision becomes dependable software.
+                for NOAA.
               </p>
             </Reveal>
             <Reveal delay={0.08}>
               <p className="mt-5 max-w-xl text-[1.0625rem] leading-relaxed text-ink-soft">
-                I grew up in {profile.origin}, where I led community technology
-                initiatives — digitising cultural archives, expanding library
-                access, and teaching students to code — before coming to
-                Mississippi to study engineering. That throughline still
-                drives me: build things that are rigorous, useful, and built
-                to last.
+                I grew up in {profile.origin} and spent a few years there
+                doing community technology work before I came to Mississippi —
+                digitising cultural archives, running a library, teaching
+                students to code. I'm doing roughly the same thing now, just
+                with larger systems: building things that are rigorous and
+                that actually get used.
               </p>
             </Reveal>
 
@@ -73,7 +75,7 @@ export function About() {
                 <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-faint">
                   Now <span className="nums">· {profile.nowDate}</span>
                 </span>
-                <span className="text-sm text-ink">{profile.now}</span>
+                <span className="text-sm text-ink">— {profile.now}</span>
               </div>
             </Reveal>
 
